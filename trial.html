@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎆 Happy Diwali Surprise! 🎆</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #2c3e50;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            padding: 30px;
+            background: linear-gradient(to right, #ff4500, #ff8c00);
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 0 0 10px #ffd700;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            animation: fadeIn 1s;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .section {
+            padding: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fireworks {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .firework {
+            position: absolute;
+            bottom: 0;
+            width: 5px;
+            height: 20px;
+            background: linear-gradient(to top, #ff8c00, #ffd700);
+            animation: launch 1.5s ease-in-out infinite;
+            border-radius: 3px;
+        }
+
+        @keyframes launch {
+            0% { transform: translateY(100%); opacity: 1; }
+            70% { opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+
+        .gift-button, .game-button {
+            margin: 20px;
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            color: white;
+            background-color: #ff4500;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .gift-button:hover, .game-button:hover {
+            background-color: #ff8c00;
+            transform: scale(1.1);
+        }
+
+        .surprise-content {
+            display: none;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .surprise-content img {
+            width: 100%;
+            border-radius: 15px;
+            margin: 20px 0;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .joke {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            color: #ffd700;
+            opacity: 0;
+            animation: slideIn 0.5s forwards;
+            transition: opacity 0.5s ease-in;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .decorative-icon {
+            width: 60px;
+            margin: 5px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .joke-container {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -2;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            background-color: #ffeb3b;
+            opacity: 0.8;
+            animation: fall 5s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* Gift Box Styling */
+        .gift-box {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            margin: 15px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gift-box img {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+        }
+
+        .gift-box:hover {
+            transform: scale(.50);
+        }
+
+        /* Pop-up styling */
+        .gift-popup {
+            position: absolute;
+            background: rgba(66, 68, 66, 0.9);
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 5px 15px rgba(255, 2, 2, 0.3);
+            transition: all 0.3s ease;
+            z-index: 10;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="glow">🎆✨Happy Diwali!✨🎆</h1>
+        <p>Wishing you a year full of light, love, and happiness!</p>
+        <div>
+            <img class="decorative-icon" src="https://static.vecteezy.com/system/resources/previews/000/250/085/original/happy-diwali-diya-oil-lamp-festival-background-illustration-vector.jpg" alt="Diwali Diya">
+            <img class="decorative-icon" src="https://png.pngtree.com/back_origin_pic/03/97/85/f124fc59fa7b0691589f38f80736a7f2.jpg" alt="Firecracker">
+            <img class="decorative-icon" src="https://th.bing.com/th/id/OIP.Swns8clVLmxbetXySmO9KQHaHa?rs=1&pid=ImgDetMain" alt="Rocket">
+            <img class="decorative-icon" src="https://th.bing.com/th/id/R.67f23be8dcdc822e2a60ac69b5d1e53f?rik=OAN8pb6Z4AcSrg&riu=http%3a%2f%2fwww-happydiwali.com%2fwp-content%2fuploads%2f2017%2f08%2fdiwali-fireworks-Wallpapers.png&ehk=uVDcf4ydbFht25Up%2fQwUCAAxMYsT1zlI%2b8RZ3ir5vcQ%3d&risl=&pid=ImgRaw&r=0" alt="crakers">
+            <img class="decorative-icon" src="https://bitemeup.com/wp-content/uploads/2019/03/bg_1024x1024.jpg" alt="Rocket">
+        </div>
+    </header>
+    
+    <div class="fireworks" id="fireworks"></div>
+    <div class="confetti" id="confetti"></div>
+
+    <div class="container">
+        <div class="section">
+            <button class="gift-button" id="surpriseButton">🎁 Surprise Gift! 🎁</button>
+            <div class="surprise-content" id="surpriseContent">
+                <img src="https://img.freepik.com/premium-photo/happy-diwali-indian-festival-background-with-candles-diwali-day-happy-diwali-day_692702-2604.jpg?w=2000" alt="Diwali Celebration">
+                <h2>Wishing you a joyous Diwali!</h2>
+                <div class="joke-container" id="jokeContainer"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <button class="game-button" id="jokeButton">😂 Show Jokes! 😂</button>
+            <div class="joke-container" id="jokeContainerJoke"></div>
+        </div>
+
+        <div class="section">
+            <h2>🎁 Click a Gift Box! 🎁</h2>
+            <div class="gift-box" id="giftBox1">
+                <img src="https://th.bing.com/th/id/R.759bb72d54b120c37e5c622d4de7b9d0?rik=b4uA3823ODr7iQ&riu=http%3a%2f%2fpngimg.com%2fuploads%2fgift%2fgift_PNG5945.png&ehk=VAXnCi9WCOnEmnYRYfcltZkTv2TsIY7vyQytivfliJM%3d&risl=&pid=ImgRaw&r=0" alt="Gift Box">
+            </div>
+            <div class="gift-box" id="giftBox2">
+                <img src="https://img.freepik.com/free-photo/3d-render-gift-box-with-ribbon-present-package_107791-15850.jpg?w=1060&t=st=1666320062~exp=1666320662~hmac=048347271240f5ab41c43e35db9b3a1ca5b93672276ecaf731689b6cf5436bef" alt="Gift Box">
+            </div>
+            <div class="gift-box" id="giftBox3">
+                <img src="https://freepngimg.com/thumb/gift/31-gift-box-png-image.png" alt="Gift Box">
+            </div>
+            <div class="gift-box" id="giftBox4">
+                <img src="https://th.bing.com/th/id/OIP.400tnWeMKKeclOplFxZ4mgHaHa?rs=1&pid=ImgDetMain" alt="Gift Box">
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Diwali Celebration. All rights reserved.</p>
+        <p>🎉 Have a wonderful Diwali! 🎉</p>
+        <p>Made with ❤️ for Diwali 2024, By RAUSHAN RAJ</p>
+    </footer>
+
+    <script>
+        document.getElementById('surpriseButton').addEventListener('click', function() {
+            const surpriseContent = document.getElementById('surpriseContent');
+            surpriseContent.style.display = surpriseContent.style.display === 'block' ? 'none' : 'block';
+            showRandomJoke();
+        });
+
+        document.getElementById('jokeButton').addEventListener('click', function() {
+            showRandomJoke();
+        });
+
+        function showRandomJoke() {
+            const jokes = [
+                "Why did the lamp fail the exam? Because it was not bright enough!",
+                "What did one candle say to another? 'I’m going out tonight!'",
+                "Why do we never tell secrets on a farm? Because the potatoes have eyes and the corn has ears!",
+                "Why did the firecracker break up with the sparkler? Because it found someone more explosive!",
+                "What do you call a fake noodle? An impasta!"
+            ];
+            const showRandomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+            const jokeContainer = document.getElementById('jokeContainerJoke');
+            jokeContainer.innerHTML = `<div class="joke">${showRandomJoke}</div>`;
+        }
+
+        const giftBoxes = document.querySelectorAll('.gift-box');
+        giftBoxes.forEach((box, index) => {
+            box.addEventListener('click', function() {
+                showGiftPopup(index);
+            });
+        });
+
+        function showGiftPopup(index) {
+            const gifts = [
+                "🎉 You found a new smartphone!",
+                "🎊 You won a beautiful Diwali lamp!",
+                "🎁 You received a box of delicious sweets!",
+                "🎈 You found a gift card for shopping!"
+            ];
+
+            const giftPopup = document.createElement('div');
+            giftPopup.className = 'gift-popup';
+            giftPopup.innerText = gifts[index % gifts.length];
+            giftBoxes[index].appendChild(giftPopup);
+
+            setTimeout(() => {
+                giftPopup.style.opacity = 80;
+                setTimeout(() => {
+                    giftBoxes[index].removeChild(giftPopup);
+                }, 300);
+            }, 3000);
+        }
+
+        // Fireworks and confetti effect
+        function createFirework() {
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            firework.style.left = Math.random() * 100 + 'vw';
+            document.getElementById('fireworks').appendChild(firework);
+            setTimeout(() => {
+                firework.remove();
+            }, 1500);
+        }
+
+        function createConfetti() {
+            const confettiPiece = document.createElement('div');
+            confettiPiece.className = 'confetti-piece';
+            confettiPiece.style.left = Math.random() * 100 + 'vw';
+            confettiPiece.style.height = Math.random() * 10 + 'px';
+            confettiPiece.style.width = Math.random() * 10 + 'px';
+            confettiPiece.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+            document.getElementById('confetti').appendChild(confettiPiece);
+            setTimeout(() => {
+                confettiPiece.remove();
+            }, 5000);
+        }
+
+        setInterval(() => {
+            createFirework();
+            createConfetti();
+        }, 500);
+
+    </script>
+</body>
+</html>
